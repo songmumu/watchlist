@@ -1,17 +1,28 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from markupsafe import escape
+from user import add_user
 
 app = Flask(__name__)
 
 
-@app.route('/user/<name>')
-def user_page(name):
-    return f'User: {escape(name)}'
+@app.route('/user/register', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        nickname = request.form.get('nickname')
+        phone = int(request.form.get('phone'))
+        password = request.form.get('password')
+        add_user(nickname, password, phone)
+        return render_template('login_success.html', name=nickname, phone=phone)
 
 
 @app.route('/')
 def index():
     return render_template('index.html', name=name, movies=movies)
+
+
+@app.route('/login_success')
+def login_success():
+    return render_template('login_success.html')
 
 
 name = 'Songmumu'
