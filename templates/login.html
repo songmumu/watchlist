@@ -1,0 +1,23 @@
+{%extends 'base.html' %}
+
+{% block style %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}" href="style.css">
+{% endblock %}
+
+{% block content %}
+    <form class="form" action="/admin/to_login" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">username</label>
+        <input type="text" name="username" class="form-control" id="username">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='javascript/login.js') }}"></script>
+{% endblock %}

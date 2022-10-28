@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }}'s Watchlist</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    {% block style %} {% endblock %}
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+</head>
+<body>
+<nav class="nav">
+    <a class="nav-link active" href="{{ url_for('index') }}">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link disabled">Disabled</a>
+</nav>
+<content class="content">
+    {% block content %} {% endblock %}
+</content>
+<footer>
+    <small>&copy; 2022 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+</footer>
+{% block javascript %} {% endblock %}
+{{ bootstrap.load_js() }}
+</body>
+</html>
